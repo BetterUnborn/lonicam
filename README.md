@@ -8,6 +8,7 @@ The Camera is infrared-capable, and the web UI offers a switch to enable some in
 This comes with a casing that fits to the "Babyhimmel" over our daughter's child bed.
 
 In the end you can monitor your little one from any smartphone or computer (anything running a browser). It'll look like this:
+![Web UI preview](https://user-images.githubusercontent.com/71769938/99910862-c1323b80-2cf0-11eb-94f2-f7fca728151c.png)
 
 
 # Hardware
