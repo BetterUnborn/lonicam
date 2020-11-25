@@ -114,4 +114,8 @@ This will disable the IR LEDs automatically every 5 minutes. Just to ensure they
 
 Basically it is beneficial to set up the Pi's watchdog ... sometimes it occured to me that it got stuck or hung (maybe due to power struggles). The watchdog will bring it back to life again.
 
-''TODO:'' Tell why.
+Install the watchdog with `sudo apt install watchdog`. Edit the file `/etc/watchdog.conf` and enable the following lines:
+```
+watchdog-device        = /dev/watchdog
+max-load-1             = 24
+```
