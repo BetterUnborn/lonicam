@@ -17,7 +17,12 @@ The components are pretty standard:
 - A Camera for the Pi (tested with th standard one)
 - An extra break-out-board supplying and holding the IR LEDs
 
-TODO: schematic system, schematic IR board.
+## The IR board
+The schematic can be seen below:
+![image](https://user-images.githubusercontent.com/71769938/100269463-dd371680-2f56-11eb-8e9c-1adbab365089.png)
+The Pi's GPIOs don't provide enough current to drive the LEDs, so a ULN2003 is used to amplify.
+
+You can craft a PCB on your own, I just soldered it to a `Lochrasterplatine`.
 
 # Software setup
 
