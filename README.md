@@ -24,6 +24,13 @@ The Pi's GPIOs don't provide enough current to drive the LEDs, so a ULN2003 is u
 
 You can craft a PCB on your own, I just soldered it to a `Lochrasterplatine`.
 
+# Casing
+The files are uploaded as FreeCAD model and the STL export. It looks like this:
+![LoniCAM_V3](https://user-images.githubusercontent.com/71769938/110521045-91783980-810f-11eb-8968-ea801ae30655.png)
+The rectangular hole is the outlet for the 4 IR LEDs, the round hole is for the camera.
+
+This casing is custom-created for her bed, you may need to modify it to properly mount it. You're welcome to reuse parts of the freecad design.
+
 # Software setup
 
 The software is based on '''Raspberry Pi OS''', so get it from https://www.raspberrypi.org/software/.
