@@ -1,13 +1,12 @@
 # About
-A baby monitor (video only). Based on RPi Cam Control project.
+This project features a privacy-friendly baby monitor (video only) for the enthusiast. 
+- Basis for it is a Raspberry Pi Zero with a camera
+- Embedded within a custom-created case
+- Only sends data in local network
+- Accessible with any device (only web browser is required)
+- Manual control of IR LEDs to illuminate picture in dark conditions
 
-## Features
-Based on on a Raspberry Pi Zero W, this runs a little web server that anyone in the WLAN can connect to.
-The Camera is infrared-capable, and the web UI offers a switch to enable some infrared lights to illuminate the scene.
-
-This comes with a casing that fits to the "Babyhimmel" over our daughter's child bed.
-
-In the end you can monitor your little one from any smartphone or computer (anything running a browser). It'll look like this:
+We use this thing on a day-to-day base, it is mounted above our daughter's bed. If the power supply and cable is good, it runs very stable for weeks.
 ![Web UI preview](https://user-images.githubusercontent.com/71769938/99910862-c1323b80-2cf0-11eb-94f2-f7fca728151c.png)
 
 
