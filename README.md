@@ -134,3 +134,15 @@ max-load-1             = 24
 ## Get Rid of Recording/Timelapsing Buttons
 
 Find the `div` by the id `main-buttons` in the file `/var/www/html/index.php` and comment the whole element out (all 7 rows). It reduces the GUI so you don't see the unused and confusing buttons no more.
+
+## Check SD card
+
+Especially when shut down by just disconnecting the power, the SD card and the filesystems can be corrupted. This checks for bad blocks:
+```
+> sudo badblocks -n -v -s /dev/mmcblk0
+```
+This scans the file system:
+```
+> sudo e2fsck -f /dev/mmcblk0p2
+```
+
