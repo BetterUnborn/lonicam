@@ -67,7 +67,7 @@ Now insert this SD card into the Pi and boot it up. Follow these steps after boo
 - Reboot, reconnect ssh
 - Run `apt update` and `apt dist-upgrade`
 - Reboot, reconnect ssh
-- Run `apt install vim wiringpi git`
+- Run `apt install vim wiringpi git` (hint: starting with Bullseye release `wiringpi` is no longer available, so omit it there)
 
 ## Installing camera service
 
