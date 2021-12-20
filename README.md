@@ -90,11 +90,6 @@ To enable extra buttons in the web UI to control the LED, create the script `/va
 ```
 #!/bin/bash
 
-# create the pwm control structures, if needed
-if [ ! -e /sys/class/pwm/pwmchip0/pwm0 ]
-then
-	echo 0 > /sys/class/pwm/pwmchip0/export
-fi
 echo 1000000 > /sys/class/pwm/pwmchip0/pwm0/period
 echo 500000 > /sys/class/pwm/pwmchip0/pwm0/duty_cycle
 echo 1 > /sys/class/pwm/pwmchip0/pwm0/enable
@@ -113,6 +108,20 @@ fi
 
 Set both scripts executable.
 
+Create a script `/opt/enablePWMForAll.sh` with this content:
+```
+# create the pwm control structures, if needed
+if [ ! -e /sys/class/pwm/pwmchip0/pwm0 ]
+then
+	echo 0 > /sys/class/pwm/pwmchip0/export
+	
+	chmod a+w /sys/class/pwm/pwmchip0/pwm0/enable
+	chmod a+w /sys/class/pwm/pwmchip0/pwm0/duty_cycle
+	chmod a+w /sys/class/pwm/pwmchip0/pwm0/period
+fi
+```
+
+Make it executable and add the line `sudo /opt/enablePWMForAll.sh` to the file `/etc/rc.local`.
 
 ### Raspberry Pi OS before Bullseye
 
