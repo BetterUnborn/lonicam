@@ -79,6 +79,45 @@ The installation process will take quite some time. Allow it to start the camera
 
 The IR LEDs are connected to the Pi's GPIO_12 pin, which is PWM capable. Thus the LED brightness can be controlled.
 
+### Raspberry Pi OS
+
+The PWM can be controlled directly via `sysfs` interface. Therefore PWM clock sources must be enabled in the overlay, so add this line to the `/boot/config.txt`:
+```
+dtoverlay=pwm
+```
+
+To enable extra buttons in the web UI to control the LED, create the script `/var/www/html/macros/ledsOn.sh` with this:
+```
+#!/bin/bash
+
+# create the pwm control structures, if needed
+if [ ! -e /sys/class/pwm/pwmchip0/pwm0 ]
+then
+	echo 0 > /sys/class/pwm/pwmchip0/export
+fi
+echo 1000000 > /sys/class/pwm/pwmchip0/pwm0/period
+echo 500000 > /sys/class/pwm/pwmchip0/pwm0/duty_cycle
+echo 1 > /sys/class/pwm/pwmchip0/pwm0/enable
+```
+The ratio of the values `500000` / `1000000` defines the duty cycle of the signal and hence the brightness, so it is set to 50% with this config.
+
+Create the script `cat /var/www/html/macros/ledsOff.sh` with this content:
+```
+#!/bin/bash
+
+if [ -e /sys/class/pwm/pwmchip0/pwm0/enable ]
+then
+	echo 0 > /sys/class/pwm/pwmchip0/pwm0/enable
+fi
+```
+
+Set both scripts executable.
+
+
+### Raspberry Pi OS before Bullseye
+
+The package `wiringpi` got deprecated in the newest version of Raspberry Pi OS (which is based on Bullseye), hence this will only work in older version until Buster.
+
 To enable extra buttons in the web UI to control the LED, create the script `/var/www/html/macros/ledsOn.sh` with this:
 ```
 #!/bin/bash
@@ -95,6 +134,8 @@ gpio -g pwm 12 0
 ```
 
 Set both scripts executable.
+
+### Configuration of server
 
 Create the file `/var/www/html/userbuttons` with this content:
 ```
